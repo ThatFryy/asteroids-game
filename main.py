@@ -1,5 +1,6 @@
 from constants import *
 import pygame
+from player import Player
 
 def main():
     pygame.init()
@@ -7,6 +8,10 @@ def main():
     
     fps = pygame.time.Clock()
     dt = 0
+    
+    # Player spawns in the center of the screen
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player.draw(screen)
     
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
