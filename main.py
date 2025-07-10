@@ -11,7 +11,6 @@ def main():
     
     # Player spawns in the center of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
-    player.draw(screen)
     
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -24,6 +23,9 @@ def main():
                 return
         # Draws a black screen    
         screen.fill((0, 0, 0))
+        
+        player.draw(screen)
+
         pygame.display.flip()
         dt = fps.tick(60) / 1000.0 
 
