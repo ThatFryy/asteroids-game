@@ -9,8 +9,14 @@ def main():
     fps = pygame.time.Clock()
     dt = 0
     
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    
+    Player.containers = updateable, drawable 
+    
     # Player spawns in the center of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
     
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -23,11 +29,13 @@ def main():
                 return
             
         dt = fps.tick(60) / 1000.0
-        player.update(dt)
+        
+        updateable.update(dt)
         
         # Draws a black screen    
         screen.fill((0, 0, 0))
-        player.draw(screen)
+        for object in drawable:
+            object.draw(screen)
         pygame.display.flip()
 
 if __name__ == "__main__":
